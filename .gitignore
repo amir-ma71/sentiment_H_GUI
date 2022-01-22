@@ -1,4 +1,6 @@
 .idea
 __pycache__
 test.py
+src/saved_model/CNN-Token-86.294.h5
+src/char_saved_models/CNN-Token-81.719.h5
 
