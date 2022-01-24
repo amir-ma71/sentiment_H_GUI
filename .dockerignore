@@ -1,0 +1,6 @@
+src/data
+src/new_gui.ui
+train-char-based.py
+train-word_based.py
+usage.py
+usage-GUI.py
