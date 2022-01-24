@@ -6,7 +6,7 @@ import pickle
 from keras.preprocessing import text, sequence
 from keras.models import load_model
 
-with open('char_saved_models/tokens.pickle', 'rb') as handle:
+with open('./src/tokens.pickle', 'rb') as handle:
     tokenize = pickle.load( handle)
 
 
