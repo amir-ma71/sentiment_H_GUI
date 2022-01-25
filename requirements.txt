@@ -3,3 +3,4 @@ keras==2.1.5
 tensorflow==1.2.1
 langdetect==1.0.9
 pandas==1.1.5
+h5py==2.10.0
