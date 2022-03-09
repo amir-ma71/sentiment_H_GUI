@@ -21,10 +21,10 @@ def load_data(filename):
     return x, y
 
 
-x_token_train, y_token_train = load_data('data/token_train.tsv')
-x_token_test, y_token_test = load_data('data/token_test.tsv')
-x_morph_train, y_morph_train = load_data('data/morph_train.tsv')
-x_morph_test, y_morph_test = load_data('data/morph_test.tsv')
+x_token_train, y_token_train = load_data('src/data/token_train.tsv')
+x_token_test, y_token_test = load_data('src/data/token_test.tsv')
+x_morph_train, y_morph_train = load_data('src/data/morph_train.tsv')
+x_morph_test, y_morph_test = load_data('src/data/morph_test.tsv')
 
 # print('X token train shape: {}'.format(x_token_train.shape))
 # print('X token test shape: {}'.format(x_token_test.shape))
@@ -40,7 +40,7 @@ def tokenizer(x_train, x_test, vocabulary_size, char_level):
                               char_level=char_level,
                               filters='')
     tokenize.fit_on_texts(x_train)  # only fit on train
-    with open('char_saved_models/tokens.pickle', 'wb') as handle:
+    with open('src/tokens.pickle', 'wb') as handle:
         pickle.dump(tokenize, handle)
     x_train = tokenize.texts_to_sequences(x_train)
     # x_train2 = tokenize.texts_to_matrix(x_train)

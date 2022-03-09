@@ -47,7 +47,7 @@ def prepare_text():
     # get sent from user online
     request_data = request.get_json()
 
-    input_sent = request_data['sentence']
+    input_sent = request_data['text']
 
     # preprocessing sent
     # remove all char except Heb words
@@ -58,32 +58,30 @@ def prepare_text():
         DetectorFactory.seed = 0
         lang = detect(sent)
     except:
-        return "No text enter"
+        return "No text enter", 400
 
     if lang != "he":
-        return "the language is not Hebrew, please type Hebrew language to detect topic."
+        return "the language is not Hebrew, please type Hebrew language to detect topic.", 400
 
     if not sent:
-        return
+        return 400
 
-    if len(sent) < 20:
-        return "your text is too small, please type more words to detect"
+    if len(sent) < 30:
+        return "your text is too small, please type more words to detect",400
 
     # Prepare the text
     prediction_dataloader = prepare_input(sent)
 
     label_list = ["Positive", "negetive"]
-    final_dict = {}
+    final_dict = {"probability": {},
+                  "dependency": []}
 
-    # build json of predict as label_list
     for i in range(len(label_list)):
-        final_dict[label_list[i]] = str(prediction_dataloader[0][i])
+        final_dict["probability"][label_list[i]] = float(round(prediction_dataloader[0][i], 2))
 
-    # sorting
-    final_dict = {k: v for k, v in sorted(final_dict.items(), key=lambda item: item[1], reverse=True)}
-
-    print("sent: ", sent)
-    print("label: ",final_dict)
+    final_dict["probability"] = {k: v for k, v in
+                                 sorted(final_dict["probability"].items(), key=lambda item: item[1], reverse=True)}
+    final_dict["dependency"].append(list(final_dict["probability"].keys())[0])
 
     # Return on a JSON format
     return jsonify(final_dict)

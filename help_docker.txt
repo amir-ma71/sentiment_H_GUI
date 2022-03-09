@@ -4,7 +4,7 @@
 
 2. then you must run docker file
 
->> docker run -p 8000:5000 senti-he:v1.5
+>> docker run -p 8000:5000 sentiment-he:v2
 
 
 **CONGRATS! . . . Now your SENTIMENT DETECTION is runnig and you can send your request
@@ -16,7 +16,7 @@ for sending request you must use this forms:
 your data input must be like this shape as JSON and POST it:
 
    {
-      "sentence": " ***** YOUR TEXT **** "
+      "text": " ***** YOUR TEXT **** "
     }
 
 
