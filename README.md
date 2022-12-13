@@ -1,5 +1,5 @@
-# sentiment_HEB_GUI
-Detect sentiment, language and translate Hebrew text with UI 
+# sentiment_H_GUI
+Detect sentiment, language and translate text with UI 
 
 
 ## Download Models
